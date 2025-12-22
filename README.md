@@ -11,3 +11,7 @@ For learning servlet
 6. getCookies(): 返回请求携带的所有 Cookie
 7. getHeader(name): 获取指定的Header, 对Header名称不区分大小写
 8. getHeaderNames(): 返回所有Header名称
+9. getInputStream(): 如果该请求带有 HTTP Body, 该方法将打开一个输入流用于读取 Body
+10. getReader(): 和 getInputStream 类似, 但打开的是 Reader
+11. getRemoteAddr(): 返回客户端的IP地址
+12. getSchema(): 返回协议类型，例如 "http", "https"
