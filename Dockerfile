@@ -1,17 +1,19 @@
-# 基于 tomcat:9-alpine 基础镜像
-FROM docker.1ms.run/library/tomcat:9-alpine
+# 基于 tomcat:9-alpine 基础镜像，因不支持servlet:v5，所以需要用tomcat10
+# FROM docker.1ms.run/library/tomcat:9-alpine
+FROM docker.1ms.run/library/tomcat:10.1-jre21-temurin
 MAINTAINER admin admin@example.com
-# 可选：安装Alpine缺失的常用工具（如bash、curl，按需添加）
-# Alpine默认无bash，若脚本依赖bash需安装；若仅用ash可跳过此步
-RUN apk add --no-cache bash curl
+RUN rm -rf /usr/local/tomcat/webapps/*
 # 核心：将本地WAR包复制到Tomcat的webapps目录
 # 注意：WAR包需与Dockerfile同目录，或指定绝对路径
-COPY target/hello.war /usr/local/tomcat/webapps/
+COPY target/hello.war /usr/local/tomcat/webapps/hello.war
+# 可选：安装Alpine缺失的常用工具（如bash、curl，按需添加）
+# Alpine默认无bash，若脚本依赖bash需安装；若仅用ash可跳过此步，因不是tomcat10不是alpine，所以不需要添加命令
+# -- RUN apk add --no-cache bash curl
+
 # 关键：修复Alpine版Tomcat的webapps空目录问题（复制webapps.dist到webapps）
 # Alpine的ash shell兼容此命令，无需修改
 # 可选：删除默认示例应用（减少镜像体积，按需执行）
-# RUN mkdir -p /usr/local/tomcat/webapps.dist && cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/ && rm -rf /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/docs
-RUN mkdir -p /usr/local/tomcat/webapps
+# -- RUN cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/ && rm -rf /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/docs
 
 # 暴露Tomcat默认端口
 EXPOSE 8080
