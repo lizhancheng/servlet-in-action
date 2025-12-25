@@ -15,3 +15,9 @@ For learning servlet
 10. getReader(): 和 getInputStream 类似, 但打开的是 Reader
 11. getRemoteAddr(): 返回客户端的IP地址
 12. getSchema(): 返回协议类型，例如 "http", "https"
+13. setAttribute(), getAttribute()
+
+### HttpServletResponse
+
+1. setStatus(int statusCode): 设置响应代码，默认是200
+2. setContentType(String type): 设置 Body 的类型，例如 "text/html"
