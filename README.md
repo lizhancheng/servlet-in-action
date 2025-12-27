@@ -21,3 +21,7 @@ For learning servlet
 
 1. setStatus(int statusCode): 设置响应代码，默认是200
 2. setContentType(String type): 设置 Body 的类型，例如 "text/html"
+3. setCharacterEncoding(String charset): 设置字符编码，如 "UTF-8"
+4. setHeader(String name, String value): 设置一个 Header 的值
+5. addCookie(String cookie): 给响应添加一个 Cookie
+6. addHeader(String name, String value): 给响应添加一个 Header , 因为 Http 协议允许有多个相同的 Header
