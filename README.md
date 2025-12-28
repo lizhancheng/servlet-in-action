@@ -25,3 +25,9 @@ For learning servlet
 4. setHeader(String name, String value): 设置一个 Header 的值
 5. addCookie(String cookie): 给响应添加一个 Cookie
 6. addHeader(String name, String value): 给响应添加一个 Header , 因为 Http 协议允许有多个相同的 Header
+
+### Dockerfile
+
+1. 构建镜像：docker build -t tomcat-alpine-hello:v1 .
+2. 运行容器：docker run -d --name tomcat-hello-app -p 8080:8080 tomcat-alpine-hello:v1
+3. 容器调试：docker exec -it tomcat-hello-app /bin/bash
