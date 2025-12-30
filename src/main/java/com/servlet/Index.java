@@ -28,5 +28,7 @@ public class Index extends HttpServlet {
 		} else {
 			printWriter.write("<a href=\"/signout\">Sign Out</a>");
 		}
+		printWriter.write("<hr>");
+		printWriter.write("<a href=\"/uselng?lang=en\">English</a> | <a href=\"/uselng?lang=zh\">中文</a>");
 	}
 }
