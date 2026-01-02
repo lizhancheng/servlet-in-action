@@ -1,6 +1,6 @@
 <%@ include file="header.jsp" %>
-<%@ page import="com.servlet.UserService.*" %>
-
+<%@ page import="com.servlet.bean.*" %>
+<% User user = (User) request.getAttribute("user"); %>
 	<h1>
 		Hello <%= user.name %>
 	</h1>

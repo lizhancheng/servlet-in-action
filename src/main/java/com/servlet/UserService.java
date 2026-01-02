@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import com.servlet.bean.User;
+import com.servlet.bean.School;
+
 @WebServlet(urlPatterns = "/user")
 public class UserService extends HttpServlet {
 	@Override
@@ -20,27 +23,5 @@ public class UserService extends HttpServlet {
 		// forward给user.jsp
 		request.getRequestDispatcher("/user.jsp")
 			.forward(request, response);
-	}
-}
-
-class User {
-	public long id;
-	public String name;
-	public School school;
-	
-	public User(long id, String name, School school) {
-		this.id = id;
-		this.name = name;
-		this.school = school;
-	}
-}
-
-class School {
-	public String name;
-	public String address;
-	
-	public School(String name, String address) {
-		this.name = name;
-		this.address = address;
 	}
 }
