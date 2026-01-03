@@ -12,4 +12,16 @@
         <welcome-file>hello</welcome-file>
     </welcome-file-list>
     -->
+    <!-- 注册Servlet，5.0版本后不需要注册 -->
+    <!--
+	<servlet>
+    	<servlet-name>UserServlet</servlet-name>
+    	<servlet-class>com.servlet.controller.UserServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>UserServlet</servlet-name>
+    	<url-pattern>/user/info</url-pattern>
+    </servlet-mapping>
+    -->
 </web-app>
