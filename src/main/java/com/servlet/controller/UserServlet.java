@@ -16,9 +16,6 @@ public class UserServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		
 		User user = new User("2026001", "张三", 22);
 		
 		boolean ageValid = user.isAgeValid();
