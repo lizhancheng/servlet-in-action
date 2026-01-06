@@ -54,7 +54,7 @@ public class UploadServlet extends HttpServlet {
 		String uploadPath = applicationPath + UPLOAD_DIR;
 		
 		File uploadDir = new File(uploadPath);
-		if (uploadDir.exists()) {
+		if (!uploadDir.exists()) {
 			uploadDir.mkdirs();
 		}
 		
