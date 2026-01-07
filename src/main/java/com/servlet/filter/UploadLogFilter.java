@@ -16,6 +16,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 @WebFilter(urlPatterns = "/pages/upload")
 public class UploadLogFilter implements Filter {
@@ -49,10 +50,16 @@ public class UploadLogFilter implements Filter {
 			
 			// 继续执行后续 Filter 或 Servlet
 			chain.doFilter(request, response);
+		} else {
+			chain.doFilter(request, response);
 		}
 	}
 	
 	private String extractFileName(HttpServletRequest request) throws ServletException, IOException {
-		return Paths.get(request.getPart("filelist").getSubmittedFileName()).getFileName().toString();
+		Part filePart = request.getPart("filelist");
+		if (filePart != null && filePart.getSubmittedFileName() != null) {
+			return Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+		}
+		return "unknown";
 	}
 }
